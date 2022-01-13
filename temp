@@ -1,0 +1,177 @@
+    
+    //碰撞
+    var boundary_st = boundary(m_array[0]);
+    var boundary_en = boundary(m_array[len]);
+
+    if (boundary_en && boundary_st) { //兩邊都碰牆
+        m_array = AddVertex(m_array);
+        res.push(m_array);
+        m_array = [];
+    }
+
+
+
+
+
+            // if (p_leng > 1 && boundary(Polygonal[p_leng - 1])) { //一個多邊形
+        //     //Polygonal = AddVertex(Polygonal);
+        //     //補框
+            
+        //     for (var _i = 0; _i < Polygonal.length; _i++) {
+        //         res.push(Polygonal[_i]);
+        //     }
+        //     Polygonal = [];
+        
+        // }
+
+
+
+
+
+
+                    // if (LinePos[i][0] != m_array[len][0] || LinePos[i][1] != m_array[len][1]) {
+                //     Polygonal.push(LinePos[i]);
+                // }
+                // var e_i = i;
+                // var Polygonal_end = [];
+                // do {
+                //     e_i++
+                //     Polygonal_end = LinePos[e_i];
+                // } while (!boundary(LinePos[e_i]));
+                // if (boundary_st && distance(m_array[0], Polygonal_end) > distance(m_array[0], Polygonal[0])) { //如果 終點到原本的終點 > 終點到原本的起始點 且 終點有碰牆
+                //     //把目前的暫存都清了
+                    
+                //     Polygonal = [];
+                //     for (var _i = 0; _i <= len; _i++) {
+                //         Polygonal.push(m_array[_i]);
+                //     }
+                // } else {
+
+
+
+function AddVertex(arr) {
+    var m_length = arr.length;
+    var m_arr = arr;
+    if (m_arr[0][0] != m_arr[m_length - 1][0] && m_arr[0][1] != m_arr[m_length - 1][1]) {
+        if (m_arr[0][0] == 0 || m_arr[m_length - 1][0] == 0) {
+            if (m_arr[0][1] == 0 || m_arr[m_length - 1][1] == 0) {
+
+                m_arr.push([0, 0]);
+            } else {
+                m_arr.push([0, c.height]);
+            }
+        } else if (m_arr[0][0] == c.width || m_arr[m_length - 1][0] == c.width) {
+            if (m_arr[0][1] == 0 || m_arr[m_length - 1][1] == 0) {
+                m_arr.push([c.width, 0]);
+            } else {
+                m_arr.push([c.width, c.height]);
+            }
+        }
+    }
+    return m_arr;
+}
+
+
+/**
+ * 有沒有在邊界上 有在邊界上return true
+ * @param {*} m_x  X
+ * @param {*} m_y  Y
+ */
+function boundary(pos) {
+    if (pos[0] == 0 || pos[1] == 0 || pos[0] == c.width || pos[1] == c.height) {
+        return true;
+    }
+    return false;
+}
+
+
+
+/**
+ * 兩點距離
+ * @param {Array} pos1 
+ * @param {Array} pos2 
+ */
+function distance(pos1, pos2) {
+    var dx = pos2[0] - pos1[0];
+    var dy = pos2[1] - pos1[1];
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    // for (var i = 0; i < LinePos.length; i++) {
+    //     var path = new Path2D();
+    //     path.moveTo(LinePos[i][0], LinePos[i][1]);
+    //     if (i == LinePos.length - 1) {
+    //         path.lineTo(LinePos[i][0], LinePos[i][1]);
+    //     } else {
+    //         path.lineTo(LinePos[i + 1][0], LinePos[i + 1][1]);
+    //     }
+    //     if (m_array.length > 0) {
+    //         var bool_1 = line.isPointInStroke(path, m_array[0][0], m_array[0][1]);
+    //         var bool_2 = line.isPointInStroke(path, m_array[len][0], m_array[len][1]);
+
+    //         var m_direction = 0;
+    //         var end_bool = true;
+    //         if (bool_1 && bool_2) { //2點都在邊上
+    //             if (distance(LinePos[i + 1], m_array[0]) < distance(LinePos[i + 1], m_array[len])) {
+    //                 m_direction = -1;
+    //             } else {
+    //                 m_direction = 1;
+    //             }
+    //             end_bool = false;
+    //         } else if (bool_1) {
+    //             m_direction = 1;
+
+    //         } else if (bool_2) {
+    //             m_direction = -1;
+    //         }
+    //         if (m_direction == 1) { //順向
+    //             if (LinePos[i][0] != m_array[0][0] || LinePos[i][1] != m_array[0][1]) {
+    //                 Polygonal.push(LinePos[i]);
+    //             }
+    //             //判斷起始點是否在新增的起始點裡面
+    //             for (var _i = 0; _i <= len; _i++) {
+    //                 Polygonal.push(m_array[_i]);
+    //             }
+    //             if (end_bool) {
+    //                 end_pos = m_array[len];
+    //             }
+    //             m_direction = 0;
+    //             m_array = []; //清空
+    //         } else if (m_direction == -1) {
+
+    //             if (LinePos[i][0] != m_array[0][0] || LinePos[i][1] != m_array[0][1]) {
+    //                 Polygonal.push(LinePos[i]);
+    //             }
+    //             for (var _i = len; _i >= 0; _i--) {
+    //                 Polygonal.push(m_array[_i]);
+    //             }
+    //             if (end_bool) {
+    //                 end_pos = m_array[0];
+    //             }
+    //             m_direction = 0;
+    //             m_array = []; //清空
+    //         } else {
+    //             Polygonal.push(LinePos[i]);
+    //         }
+    //     } else {
+    //         if (end_pos.length != 0) {
+    //             if (line.isPointInStroke(path, end_pos[0], end_pos[1])) { //判斷最尾端有沒有到縣上了
+    //                 end_pos = [];
+    //             }
+    //         } else {
+    //             Polygonal.push(LinePos[i]);
+    //         }
+    //     }
+    // }
+    // res = Polygonal;

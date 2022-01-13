@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
+</head>
+
+<body onload="isonload()">
+    <!-- style="background-image:url('./bg.jpg')" -->
+    <canvas id="HP" height="110" width="1200" style="position:static;"></canvas><P>
+    <img src=".\img\bg.jpg" height="700" width="1200" id="bg" style="position: absolute; z-index: -1 ;">
+    <img src=".\img\Boss.gif" height="700" width="1200" id="BossImg" style="position: absolute; z-index: -1 ;">
+    <img src=".\img\ui\LOADING-1.png" height="148" width="590.5" id="HP1" style="position: absolute; z-index: -1 ;">
+    <img src=".\img\ui\HP1.jpg" height="148" width="590.5" id="HP2" style="position: absolute; z-index: -1 ;">
+    <img src=".\img\ui\LOADING-3.png" height="148" width="590.5" id="HP3" style="position: absolute; z-index: -1 ;">
+    <img src=".\img\ui\LOADING-4.png" height="148" width="590.5" id="HP4" style="position: absolute; z-index: -1 ;">
+    <canvas id="myPlay" width="1200" height="700" style="position: absolute; z-index: 4 ;">
+    </canvas>
+    <canvas id="lineTemp" width="1200" height="700" style="position: absolute; z-index: 3"></canvas>
+    <canvas id="myimg" width="1200" height="700" style="position: absolute; z-index: 2"></canvas>
+    <canvas id="myMask" width="1200" height="700" style="position: absolute; z-index: 1"></canvas>
+    <canvas id="monster" width="1200" height="700" style="position: absolute; z-index: 5"></canvas>
+    <canvas id="debug" width="1200" height="700" style="position: absolute; z-index: 6 ;">
+    </canvas>
+
+    <canvas width="1200" height="700" style="position: static;"></canvas>
+    <input id="input_array" type="text" style="position: static;">
+    <button onclick="H5Debug()">debug</button>
+    <button onclick="Dclear()">clear debug</button>
+
+    <!-- 編輯程式 -->
+    <p>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <input id="input_array" type="text" style="position: static;">
+    <button id = "editLevels" onclick="getWinPos()">獲取過關的座標</button>
+    <p id="out_pos" >連線座標:</p>
+    <!-- ****** -->
+
+    <script src="./debug.js"></script>
+    <script src="./game_levels.js"></script>
+    <script src="./player.js"></script>
+    <script src="./monster.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
